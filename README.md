@@ -25,7 +25,8 @@ Generating the **Community Images** file is easy as the Azure Portal allows "Exp
 - https://portal.azure.com/#browse/Microsoft.Compute%2Flocations%2FcommunityGalleries%2Fimages
 
 The following command generates the list of **Marketplace Images** ready to be used when running AIS
-```#export marketplace images to file (removes multiple spaces and table headers)
+```
+#export marketplace images to file (removes multiple spaces and table headers)
 az vm image list --all -o table | sed 's/  */ /g' | tail -n +3 > images_marketplace.txt
 ```
 
