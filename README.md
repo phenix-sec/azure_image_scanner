@@ -25,7 +25,7 @@ Generating the **Community Images** file is easy as the Azure Portal allows "Exp
 - https://portal.azure.com/#browse/Microsoft.Compute%2Flocations%2FcommunityGalleries%2Fimages
 
 The following command generates the list of **Marketplace Images** ready to be used when running AIS
-```
+```sh
 #export marketplace images to file (removes multiple spaces and table headers)
 az vm image list --all -o table | sed 's/  */ /g' | tail -n +3 > images_marketplace.txt
 ```
@@ -40,7 +40,7 @@ Initiating a scan with AIS is a rather simple process that includes the followin
 
 3. Edit the following variables inside the AIS script. You will need to create an Azure Storage Account container and a SAS token, so that AIS can store the extracted data.
 
-```
+```sh
 #MUST CHANGE
 imagesfile="images.txt"
 containerurl=""   #Storage account container for data storage
@@ -49,7 +49,7 @@ sastoken=""   #Required to access the container
 
 4. Using the root user, install Azure CLI on the VM and log into your Azure account.
 
-```
+```sh
 sudo su
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 az login
@@ -57,7 +57,7 @@ az login
 
 5. Run Azure Image Scanner as root. (Optional: use "screen" command to run the script in a background session)
 
-```
+```sh
 sudo su   #root access required to execute elevated commands
 screen -L   #run screen session and log data to file
 bash AIS.sh
