@@ -1,7 +1,7 @@
 # Azure Image Scanner (AIS)
 
 **Azure Image Scanner** can be used to scan **Community** and **Marketplace** images on Azure in order to extract files with potential secrets. More info in the blogpost:
-- <URL>
+- https://securitycafe.ro/2024/10/27/azure-cloudquarry-searching-for-secrets-in-public-vm-images/
 
 ## Features
 
@@ -39,7 +39,8 @@ Initiating a scan with AIS is a rather simple process that includes the followin
 
 3. Edit the following variables inside the AIS script. You will need to create an Azure Storage Account container and a SAS token, so that AIS can store the extracted data.
 
-```#MUST CHANGE
+```
+#MUST CHANGE
 imagesfile="images.txt"
 containerurl=""   #Storage account container for data storage
 sastoken=""   #Required to access the container
@@ -47,14 +48,16 @@ sastoken=""   #Required to access the container
 
 4. Using the root user, install Azure CLI on the VM and log into your Azure account.
 
-```sudo su
+```
+sudo su
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 az login
 ```
 
 5. Run Azure Image Scanner as root. (Optional: use "screen" command to run the script in a background session)
 
-```sudo su   #root access required to execute elevated commands
+```
+sudo su   #root access required to execute elevated commands
 screen -L   #run screen session and log data to file
 bash AIS.sh
 ```
